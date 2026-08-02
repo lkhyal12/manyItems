@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+#root {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-optical-sizing: auto;
+}
+
+@theme {
+  --color-rabbit-red: #ea2e0e;
+}
+
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+}

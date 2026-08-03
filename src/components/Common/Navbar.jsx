@@ -77,6 +77,8 @@ const Navbar = () => {
         handleDrawerToggle={handleDrawerToggle}
         drawerOpen={drawerOpen}
       />
+
+      {/* mobile navigation */}
     </>
   );
 };

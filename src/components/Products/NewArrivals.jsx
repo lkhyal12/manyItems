@@ -147,6 +147,7 @@ const NewArrivals = () => {
 
     if (!container) return;
     container.addEventListener("scroll", updateScrollBtns);
+    return container.removeEventListener("scroll", updateScrollBtns);
   }, []);
   return (
     <section>

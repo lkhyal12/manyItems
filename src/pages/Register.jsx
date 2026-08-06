@@ -1,9 +1,10 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import loginImg from "../assets/login.webp";
-const Login = () => {
+import registerImg from "../assets/register.webp";
+const Register = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const nameRef = useRef();
   return (
     <div className="flex">
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-8 md:p-12 ">
@@ -17,6 +18,15 @@ const Login = () => {
           <p className="text-center mb-6">
             Enter your username and password to login
           </p>
+          <div className="mb-4">
+            <label className="block text-sm font-semibold mb-2">Name </label>
+            <input
+              type="email"
+              ref={nameRef}
+              className="p-2 w-full rounded border border-gray-200"
+              placeholder="Enter your name..."
+            />
+          </div>
           <div className="mb-4">
             <label className="block text-sm font-semibold mb-2">Email </label>
             <input
@@ -45,9 +55,9 @@ const Login = () => {
           </button>
 
           <p className="mt-6 text-center text-sm ">
-            Don't have an account?{" "}
-            <Link to="/register" className="text-blue-500">
-              Create one now
+            Already have an account?{" "}
+            <Link to="/login" className="text-blue-500">
+              Login now
             </Link>
           </p>
         </form>
@@ -55,11 +65,15 @@ const Login = () => {
 
       <div className="hidden md:block w-1/2 bg-gray-800">
         <div className="h-full flex flex-col justify-center items-center">
-          <img src={loginImg} alt="" className="w-full h-187.5 object-cover" />
+          <img
+            src={registerImg}
+            alt=""
+            className="w-full h-187.5 object-cover"
+          />
         </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;

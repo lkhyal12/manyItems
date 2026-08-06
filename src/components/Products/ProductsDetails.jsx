@@ -1,5 +1,74 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import ProductGrid from "./ProductGrid";
+
+const selectedProduct = {
+  name: "Stylish Jacket",
+  price: 120,
+  originalPrice: 150,
+  description: "This is a stylish jacket perfect for any ocasion.",
+  brand: "FashIt",
+  material: "Leather",
+  sizes: ["S", "M", "L", "XL"],
+  colors: ["blue", "black"],
+  images: [
+    {
+      url: "https://picsum.photos/500/500?random=1",
+      altText: "stylish jacket 1",
+    },
+    {
+      url: "https://picsum.photos/500/500?random=2",
+      altText: "stylish jacket 2",
+    },
+  ],
+};
+
+const similarProducts = [
+  {
+    _id: 1,
+    name: "Product 1",
+    price: 100,
+    images: [
+      {
+        url: "https://picsum.photos/500/500?random=2",
+        altText: "stylish jacket 2",
+      },
+    ],
+  },
+  {
+    _id: 2,
+    name: "Product 2",
+    price: 150,
+    images: [
+      {
+        url: "https://picsum.photos/500/500?random=3",
+        altText: "Product 2",
+      },
+    ],
+  },
+  {
+    _id: 3,
+    name: "Product 3",
+    price: 120,
+    images: [
+      {
+        url: "https://picsum.photos/500/500?random=4",
+        altText: "stylish jacket 2",
+      },
+    ],
+  },
+  {
+    _id: 4,
+    name: "Product 4",
+    price: 200,
+    images: [
+      {
+        url: "https://picsum.photos/500/500?random=5",
+        altText: "stylish jacket 2",
+      },
+    ],
+  },
+];
 
 const ProductsDetails = () => {
   const [mainImg, setMainImg] = useState("");
@@ -7,74 +76,6 @@ const ProductsDetails = () => {
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [isBtnDisabled, setIsBtnDisabled] = useState(false);
-
-  const selectedProduct = {
-    name: "Stylish Jacket",
-    price: 120,
-    originalPrice: 150,
-    description: "This is a stylish jacket perfect for any ocasion.",
-    brand: "FashIt",
-    material: "Leather",
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["blue", "black"],
-    images: [
-      {
-        url: "https://picsum.photos/500/500?random=1",
-        altText: "stylish jacket 1",
-      },
-      {
-        url: "https://picsum.photos/500/500?random=2",
-        altText: "stylish jacket 2",
-      },
-    ],
-  };
-
-  const similarProducts = [
-    {
-      _id: 1,
-      name: "Product 1",
-      price: 100,
-      images: [
-        {
-          url: "https://picsum.photos/500/500?random=2",
-          altText: "stylish jacket 2",
-        },
-      ],
-    },
-    {
-      _id: 2,
-      name: "Product 2",
-      price: 150,
-      images: [
-        {
-          url: "https://picsum.photos/500/500?random=3",
-          altText: "Product 2",
-        },
-      ],
-    },
-    {
-      _id: 3,
-      name: "Product 3",
-      price: 120,
-      images: [
-        {
-          url: "https://picsum.photos/500/500?random=4",
-          altText: "stylish jacket 2",
-        },
-      ],
-    },
-    {
-      _id: 4,
-      name: "Product 4",
-      price: 200,
-      images: [
-        {
-          url: "https://picsum.photos/500/500?random=5",
-          altText: "stylish jacket 2",
-        },
-      ],
-    },
-  ];
 
   function handleQuantityUpdate(sign) {
     if (sign === "-") {
@@ -111,7 +112,7 @@ const ProductsDetails = () => {
           <div className="hidden md:flex flex-col space-y-4 mr-6">
             {selectedProduct.images?.map((image, idx) => (
               <img
-                className={image.url}
+                src={image.url}
                 alt={image.altText}
                 key={image?.altText || `Thumbnail${idx}`}
                 className="w-20 h-20 rounded-lg cursor-pointer border border-gray-300 object-cover"
@@ -253,6 +254,16 @@ const ProductsDetails = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* like suggestions */}
+
+        <div className="mt-20">
+          <h2 className="text-2xl text-center font-medium mb-4">
+            You May Also Like
+          </h2>
+
+          <ProductGrid products={similarProducts} />
         </div>
       </div>
     </div>

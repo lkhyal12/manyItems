@@ -79,6 +79,7 @@ const Navbar = () => {
       <CartDrawer
         handleDrawerToggle={handleDrawerToggle}
         drawerOpen={drawerOpen}
+        setDrawerOpen={setDrawerOpen}
       />
 
       {/* mobile navigation */}

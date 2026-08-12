@@ -9,6 +9,13 @@ import CollectionPage from "./pages/CollectionPage";
 import Checkout from "./components/Cart/Checkout";
 import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 import OrderDetailsPage from "./pages/OrderDetailsPage";
+import MyOrdersPage from "./pages/MyOrdersPage";
+import AdminLayout from "./components/Admin/AdminLayout";
+import AdminHomePage from "./pages/AdminHomePage";
+import UserManagement from "./components/Admin/UserManagement";
+import ProductMangement from "./components/Admin/ProductMangement";
+import EditProductsPage from "./components/Admin/EditProductsPage";
+import OrderManagement from "./components/Admin/OrderManagement";
 
 const App = () => {
   return (
@@ -27,6 +34,15 @@ const App = () => {
             element={<OrderConfirmationPage />}
           />
           <Route path="/order/:id" element={<OrderDetailsPage />} />
+          <Route path="/myorders" element={<MyOrdersPage />} />
+        </Route>
+        {/* admin layout */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<AdminHomePage />} />
+          <Route path="users" element={<UserManagement />} />
+          <Route path="products" element={<ProductMangement />} />
+          <Route path="products/edit/:id" element={<EditProductsPage />} />
+          <Route path="orders" element={<OrderManagement />} />
         </Route>
       </Routes>
     </>
